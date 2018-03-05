@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container text-center" style="width:30rem">
+    <br>
+    <h3>Sign-up here</h3>
+    <hr>
+    <form class="from-control" method="post">
+      {% csrf_token %}
+      <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">@</span>
+    </div>{{form.username}}
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">First and Last Name</span>
+    </div>
+    {{form.first_name}}
+    {{form.last_name}}
+  </div>
+  <div class="input-group mb-3">{{form.email}}
+  </div>
+  <div class="input-group mb-3">{{form.password1}}
+  </div>
+  <div class="input-group mb-3">{{form.password2}}
+  </div>
+      <input type="submit" name="" value="Register" class="btn btn-success">
+    </form>
+  </div>
+{% endblock %}

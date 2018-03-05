@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="jumbotron" style="background-color:transparent;padding-bottom:0px;margin-top:0px">
+    <h3>Search for medicine here</h3>
+    <form method="GET" action="{% url "result" %}" id="id_form" class="form-control" style="border-color:transparent">
+    <input type="search" placeholder="Search by name or brand..." class="form-control" style="width:50%" id="q" name="q" value="{{ request.GET.q }}" style="float:left">
+    <input type="submit" name="search" class="btn btn-primary" value="search">
+</form>
+  </div>
+  {% for item in items %}
+  <div class="card" style="width: 18rem;">
+  <div class="card-header">
+    {{item.name}}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Price : &#x20B9; {{item.price}} per unit</li>
+    <li class="list-group-item">Manufacturer : {{item.company}}</li>
+    <li class="list-group-item"><strong>Available at :</strong></li>
+    <li class="list-group-item">{{item.user.userprofile.title}}</li>
+    <li class="list-group-item">{{item.user.userprofile.phone}}</li>
+  </ul>
+</div>
+
+
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container text-center">
+  <br>
+  <p>Update product</p>
+  <hr>
+  <form class="form-control" method="POST" style="border-color:transparent">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" name="" class="btn" value="Add">
+  </form>
+</div>
+
+{% endblock %}

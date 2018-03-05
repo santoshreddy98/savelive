@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container text-center">
+    <br>
+  <div class="row">
+    <div class="col">
+      <h3>Your Profile</h3>
+      <br>
+      <div class="card">
+          <h5 class="card-title">Title : {{user.userprofile.title}}</h5>
+          <h5>Phone : {{user.userprofile.phone}}</h5>
+          <h5>Address : {{user.userprofile.address}}</h5>
+      </div>
+      <br>
+      <a href="{% url 'add' %}" class="btn">Add Product</a>
+    </div>
+    <div class="col">
+        <h5>Your Products are here</h5>
+      <style media="screen">
+        .hey{
+          overflow: auto;
+          height: 30rem;
+        }
+      </style>
+      <div class="hey">
+
+        {% for m in meds %}
+        <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{m.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{m.company}}</h6>
+    <p class="card-text">{{m.des}}</p>
+    <p class="card-text">&#x20B9; {{m.price}}</p>
+    <h6 class="card-subtitle mb-2 text-muted">{{m.updated_date}}</h6>
+    <a href="{% url 'update' pk=m.pk %}" class="card-link">Update</a>
+    <a href="{% url 'delete' pk=m.pk %}" class="card-link" style="color:red">Delete</a>
+  </div>
+</div>
+<br>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
